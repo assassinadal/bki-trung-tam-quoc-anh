@@ -451,8 +451,18 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             //v_fDE.display_4_update(m_us);
             if (DialogResult.Yes == BaseMessages.MsgBox_YES_NO_CANCEL("Bạn có chắc chắc muốn lớp này nghỉ hoạt động không?"))
             {
-                US_V_DM_HOC_SINH v_us_dm_hoc_sinh = new US_V_DM_HOC_SINH();
-
+                US_GD_HOC v_us = new US_GD_HOC();
+                DS_GD_HOC v_ds = new DS_GD_HOC();
+                decimal op_dc_id_gd_hoc = 0;
+                v_us.FillDataset(v_ds, "WHERE ID_LOP_MON = " + m_op_dc_id_lop_mon + " and TRANG_THAI_YN = 'Y'");
+                for (int i = 0; i < v_ds.Tables[0].Rows.Count; i++)
+                {
+                    DataRow v_dr = v_ds.Tables[0].Rows[i];
+                    US_GD_HOC v_us_gd_hoc = new US_GD_HOC(CIPConvert.ToDecimal(v_dr[GD_HOC.ID]));
+                    v_us_gd_hoc.strTRANG_THAI_YN = "N";
+                    v_us_gd_hoc.datNGAY_KET_THUC = DateTime.Now.Date;
+                    v_us_gd_hoc.Update();
+                }
 
                 US_DM_LOP_MON v_us_dm_lop_mon = new US_DM_LOP_MON(m_op_dc_id_lop_mon);
                 v_us_dm_lop_mon.dcTRANG_THAI_LOP_MON = 89;
@@ -648,7 +658,6 @@ namespace BKI_QLTTQuocAnh.DanhMuc
                 CSystemLog_301.ExceptionHandle(v_e);
             }
         }
-
 
         private void m_cmd_view_Click(object sender, EventArgs e)
         {

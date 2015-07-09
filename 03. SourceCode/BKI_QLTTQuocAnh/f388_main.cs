@@ -599,7 +599,19 @@ namespace BKI_QLTTQuocAnh
 
         void m_cmd_cho_hs_len_lop_ItemClick(object sender, ItemClickEventArgs e)
         {
+            try
+            {
+                f370_len_lop_cho_hoc_sinh v_frm = new f370_len_lop_cho_hoc_sinh();
 
+                if (IsExistFormName(v_frm)) return;
+
+                v_frm.MdiParent = this;
+                v_frm.Show();
+            }
+            catch (Exception v_e)
+            {
+                CSystemLog_301.ExceptionHandle(v_e);
+            }
         }
     }
 }

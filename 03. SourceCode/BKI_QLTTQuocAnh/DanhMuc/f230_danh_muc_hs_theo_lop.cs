@@ -635,9 +635,16 @@ namespace BKI_QLTTQuocAnh {
         }
 
         void f230_danh_muc_hs_theo_lop_KeyDown(object sender, KeyEventArgs e) {
-
-            if(e.KeyCode == Keys.Enter) {
-                load_data_2_grid();
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    load_data_2_grid();
+                }
+            }
+            catch (Exception v_e)
+            {
+                CSystemLog_301.ExceptionHandle(v_e);
             }
         }
 
