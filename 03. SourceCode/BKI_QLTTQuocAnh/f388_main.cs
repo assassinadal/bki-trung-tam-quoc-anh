@@ -596,5 +596,10 @@ namespace BKI_QLTTQuocAnh
                 CSystemLog_301.ExceptionHandle(v_e);
             }
         }
+
+        void m_cmd_cho_hs_len_lop_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -451,6 +451,9 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             //v_fDE.display_4_update(m_us);
             if (DialogResult.Yes == BaseMessages.MsgBox_YES_NO_CANCEL("Bạn có chắc chắc muốn lớp này nghỉ hoạt động không?"))
             {
+                US_V_DM_HOC_SINH v_us_dm_hoc_sinh = new US_V_DM_HOC_SINH();
+
+
                 US_DM_LOP_MON v_us_dm_lop_mon = new US_DM_LOP_MON(m_op_dc_id_lop_mon);
                 v_us_dm_lop_mon.dcTRANG_THAI_LOP_MON = 89;
                 v_us_dm_lop_mon.Update();

@@ -77,6 +77,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.MdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.m_cmd_cho_hs_len_lop = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MdiManager)).BeginInit();
@@ -118,9 +119,10 @@
             this.m_cmd_bien_dong_hs,
             this.m_cmd_backup_restore,
             this.m_cmd_ds_hs_theo_lm,
-            this.m_cmd_import_excel});
+            this.m_cmd_import_excel,
+            this.m_cmd_cho_hs_len_lop});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 37;
+            this.ribbon.MaxItemId = 38;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -456,6 +458,7 @@
             this.ribbonPageGroup5.AllowTextClipping = false;
             this.ribbonPageGroup5.ItemLinks.Add(this.m_cmd_diem_danh);
             this.ribbonPageGroup5.ItemLinks.Add(this.m_cmd_dm_lop_mon);
+            this.ribbonPageGroup5.ItemLinks.Add(this.m_cmd_cho_hs_len_lop);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Lớp môn";
             // 
@@ -531,6 +534,16 @@
             // 
             this.MdiManager.MdiParent = this;
             // 
+            // m_cmd_cho_hs_len_lop
+            // 
+            this.m_cmd_cho_hs_len_lop.Caption = "Cho học sinh lên lớp";
+            this.m_cmd_cho_hs_len_lop.Glyph = ((System.Drawing.Image)(resources.GetObject("m_cmd_cho_hs_len_lop.Glyph")));
+            this.m_cmd_cho_hs_len_lop.Id = 37;
+            this.m_cmd_cho_hs_len_lop.Name = "m_cmd_cho_hs_len_lop";
+            this.m_cmd_cho_hs_len_lop.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.m_cmd_cho_hs_len_lop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.m_cmd_cho_hs_len_lop_ItemClick);
+            // 
             // f388_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +563,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MdiManager)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -602,5 +616,6 @@
         private DevExpress.XtraBars.BarButtonItem m_cmd_ds_hs_theo_lm;
         private DevExpress.XtraBars.BarButtonItem m_cmd_import_excel;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem m_cmd_cho_hs_len_lop;
     }
 }

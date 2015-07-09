@@ -183,7 +183,6 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             return false;
         }
 
-
         private bool check_phieu_is_exist()
         {
             DS_V_RPT_CHI_TIET_PHIEU_THU v_ds_v_rpt_chi_tiet_phieu_thu = new DS_V_RPT_CHI_TIET_PHIEU_THU();
@@ -210,10 +209,41 @@ namespace BKI_QLTTQuocAnh.NghiepVu
 
             if (check_phieu_is_exist())
             {
-                BaseMessages.MsgBox_Error("Tháng này bạn đã lập phiếu thực thu rồi. Bạn kiểm tra lại nhé!");
-                return;
+                //BaseMessages.MsgBox_Error("Tháng này bạn đã lập phiếu thực thu rồi. Bạn kiểm tra lại nhé!");
+                //BaseMessages.MsgBox_YES_NO_CANCEL("Tháng này bạn đã lập phiếu thực thu rồi. Bạn có muốn lập lại phiếu không?");
+                if (BaseMessages.MsgBox_YES_NO_CANCEL("Tháng này bạn đã lập phiếu phải thu rồi. Bạn có muốn lập lại phiếu không?") == DialogResult.Yes)
+                {
+                    delete_phieu_cu();
+                    tao_phieu();
+                    BaseMessages.MsgBox_Infor("Đã tạo phiếu phải thu tự động cho lớp " + m_cbo_lop_mon.Text);
+                    return;
+                }
+                else
+                {
+                    return;
+                }
             }
 
+            tao_phieu();
+            BaseMessages.MsgBox_Infor("Đã tạo phiếu phải thu tự động cho lớp " + m_cbo_lop_mon.Text);
+        }
+
+        private void delete_phieu_cu()
+        {
+            DS_V_RPT_CHI_TIET_PHIEU_THU v_ds_v_rpt_chi_tiet_phieu_thu = new DS_V_RPT_CHI_TIET_PHIEU_THU();
+            US_V_RPT_CHI_TIET_PHIEU_THU v_us_v_rpt_chi_tiet_phieu_thu = new US_V_RPT_CHI_TIET_PHIEU_THU();
+            v_us_v_rpt_chi_tiet_phieu_thu.FillDataset(v_ds_v_rpt_chi_tiet_phieu_thu, CIPConvert.ToDecimal(m_cbo_lop_mon.SelectedValue), m_dat_tai_ngay.Value.Date);
+            for (int i = 0; i < v_ds_v_rpt_chi_tiet_phieu_thu.Tables[0].Rows.Count; i++)
+            {
+                US_V_RPT_CHI_TIET_PHIEU_THU v_us_v_rpt_chi_tiet_phieu_thu_detail = new US_V_RPT_CHI_TIET_PHIEU_THU(v_ds_v_rpt_chi_tiet_phieu_thu.Tables[0].Rows[i]);
+                v_us_v_rpt_chi_tiet_phieu_thu_detail.BeginTransaction();
+                v_us_v_rpt_chi_tiet_phieu_thu_detail.DeleteByID(v_us_v_rpt_chi_tiet_phieu_thu_detail.dcID);
+                v_us_v_rpt_chi_tiet_phieu_thu_detail.CommitTransaction();
+            }
+        }
+
+        private void tao_phieu()
+        {
             US_GD_PHIEU_THU v_us_gd_phieu_thu = new US_GD_PHIEU_THU();
             US_GD_CHI_TIET_PHIEU_THU v_us_gd_chi_tiet_phieu_thu = new US_GD_CHI_TIET_PHIEU_THU();
 
@@ -250,7 +280,6 @@ namespace BKI_QLTTQuocAnh.NghiepVu
                 v_us_gd_chi_tiet_phieu_thu.Insert();
             }
             v_us_gd_phieu_thu.CommitTransaction();
-            BaseMessages.MsgBox_Infor("Đã tạo phiếu phải thu tự động cho lớp " + m_cbo_lop_mon.Text);
         }
 
         #endregion

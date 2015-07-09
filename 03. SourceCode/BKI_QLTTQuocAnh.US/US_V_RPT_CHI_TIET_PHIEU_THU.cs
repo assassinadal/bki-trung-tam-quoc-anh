@@ -427,5 +427,27 @@ namespace BKI_QLTTQuocAnh.US
 
             v_obj.fillDataSetByCommand(this, op_rpt);
         }
+
+        public void FillDataset_by_id_lm_id_hs(DS_V_RPT_CHI_TIET_PHIEU_THU op_rpt, decimal ip_dc_id_hoc_sinh, decimal ip_dc_id_lop_mon, DateTime ip_dat_ngay_thu)
+        {
+            CStoredProc v_obj = new CStoredProc("pr_lay_ds_phieu_pt_theo_hs_lop_thang");
+
+            v_obj.addDecimalInputParam("@ip_dc_id_hoc_sinh", ip_dc_id_hoc_sinh);
+            v_obj.addDecimalInputParam("@ip_dc_id_lop_mon", ip_dc_id_lop_mon);
+            v_obj.addDatetimeInputParam("@ip_dat_ngay_thu", ip_dat_ngay_thu);
+
+            v_obj.fillDataSetByCommand(this, op_rpt);
+        }
+
+        public void FillDataset_by_id_lm_id_hs_check_tt_gt(DS_V_RPT_CHI_TIET_PHIEU_THU op_rpt, decimal ip_dc_id_hoc_sinh, decimal ip_dc_id_lop_mon, DateTime ip_dat_ngay_thu)
+        {
+            CStoredProc v_obj = new CStoredProc("pr_lay_ds_phieu_tt_gt_theo_hs_lop_thang");
+
+            v_obj.addDecimalInputParam("@ip_dc_id_hoc_sinh", ip_dc_id_hoc_sinh);
+            v_obj.addDecimalInputParam("@ip_dc_id_lop_mon", ip_dc_id_lop_mon);
+            v_obj.addDatetimeInputParam("@ip_dat_ngay_thu", ip_dat_ngay_thu);
+
+            v_obj.fillDataSetByCommand(this, op_rpt);
+        }
     }
 }
