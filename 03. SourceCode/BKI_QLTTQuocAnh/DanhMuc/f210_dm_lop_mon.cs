@@ -535,25 +535,13 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             m_cmd_update.Click += new EventHandler(m_cmd_update_Click);
             m_cmd_nghi_hoat_dong.Click += new EventHandler(m_cmd_delete_Click);
             m_cmd_xuat_excel.Click += new EventHandler(m_cmd_view_Click);
-            m_fg.Click += m_fg_Click;
+            m_fg.DoubleClick += m_fg_DoubleClick;
             m_cmd_cho_lop_mon_hoat_dong.Click += m_cmd_cho_lop_mon_hoat_dong_Click;
             this.KeyDown += f210_dm_lop_mon_KeyDown;
             m_cmd_xoa_lop_mon.Click += m_cmd_xoa_lop_mon_Click;
         }
 
-        void m_cmd_xoa_lop_mon_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                delete_dm_lop_mon();
-            }
-            catch (Exception v_e)
-            {
-                CSystemLog_301.ExceptionHandle(v_e);
-            }
-        }
-
-        private void m_fg_Click(object sender, EventArgs e)
+        void m_fg_DoubleClick(object sender, EventArgs e)
         {
             try
             {
@@ -563,6 +551,22 @@ namespace BKI_QLTTQuocAnh.DanhMuc
                 grid2us_object(v_us_dm_lop_mon, m_fg.Row);
 
                 m_op_dc_id_lop_mon = v_us_dm_lop_mon.dcID;
+
+                f230_danh_muc_hs_theo_lop v_frm = new f230_danh_muc_hs_theo_lop();
+                v_frm.display(m_op_dc_id_lop_mon);
+
+            }
+            catch (Exception v_e)
+            {
+                CSystemLog_301.ExceptionHandle(v_e);
+            }
+        }
+
+        void m_cmd_xoa_lop_mon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                delete_dm_lop_mon();
             }
             catch (Exception v_e)
             {

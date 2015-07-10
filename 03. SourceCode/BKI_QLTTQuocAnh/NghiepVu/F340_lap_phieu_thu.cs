@@ -23,9 +23,6 @@ using C1.Win.C1FlexGrid;
 
 namespace BKI_QLTTQuocAnh.NghiepVu
 {
-
-
-
     public class f340_lap_phieu_thu : System.Windows.Forms.Form
     {
         #region Design_Form

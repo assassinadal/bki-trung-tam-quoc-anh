@@ -26,9 +26,6 @@ using C1.Win.C1FlexGrid;
 
 namespace BKI_QLTTQuocAnh
 {
-
-
-
     public class f370_len_lop_cho_hoc_sinh : System.Windows.Forms.Form
     {
         internal System.Windows.Forms.ImageList ImageList;
@@ -523,6 +520,11 @@ namespace BKI_QLTTQuocAnh
             v_us_dm_lop_mon.CommitTransaction();
         }
 
+        private void refresh_form()
+        {
+            load_data_2_cbo_lop_mon_cu();
+            load_data_2_cbo_lop_mon_moi();
+        }
 
         private void insert_v_dm_hoc_sinh()
         {
@@ -605,7 +607,7 @@ namespace BKI_QLTTQuocAnh
                 else
                 {
                     cho_hoc_sinh_len_lop();
-                    load_data_2_grid();
+                    refresh_form();
                 }
 
             }

@@ -344,13 +344,13 @@ namespace BKI_QLTTQuocAnh {
         public void display() {
             this.ShowDialog();
         }
-
-
+        
         public decimal display(decimal ip_dc_id_lop_mon) {
             m_obj_trans = get_trans_object(m_fg);
             m_trang_thai_hien_thi = 1;
             load_data_2_cbo_lop_mon(ip_dc_id_lop_mon, m_trang_thai_hien_thi);
-            m_cbo_trang_thai_hv.SelectedValue = CONST_ID_TRANG_THAI_HOC_SINH.DANG_HOC;
+            CCommon.load_data_2_cbo_trang_thai_hoc_sinh(m_cbo_trang_thai_hv);
+            //m_cbo_trang_thai_hv.SelectedValue = CONST_ID_TRANG_THAI_HOC_SINH.DANG_HOC;
             load_data_2_grid();
             this.ShowDialog();
             return m_trang_thai_hien_thi;
@@ -475,7 +475,7 @@ namespace BKI_QLTTQuocAnh {
             m_ds = new DS_V_DM_HOC_SINH();
             m_ds.Clear();
             m_ds.EnforceConstraints = false;
-            if(m_cbo_trang_thai_hv.Text == "Đang học") {
+            if(m_cbo_trang_thai_hv.SelectedIndex == 0) {
                 m_us.FillDataset(m_ds
                , CIPConvert.ToDecimal(m_cbo_lop_mon.SelectedValue)
                , m_txt_search.Text.Trim()

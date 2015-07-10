@@ -96,6 +96,13 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             m_txt_don_gia.Text = m_us_dm_lop_mon.dcDON_GIA_BUOI_HOC.ToString();
         }
 
+        private void refresh_form()
+        {
+            m_txt_ma_lop_mon.Text = "";
+            m_txt_mo_ta.Text = "";
+            m_txt_don_gia.Text = "";
+        }
+
         private void save_data()
         {
             if (check_validate_data_is_OK() != true)
@@ -153,6 +160,23 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             try
             {
                 save_data();
+                if (m_e_form_mode == DataEntryFormMode.InsertDataState)
+                {
+                    DialogResult v_dlg = BaseMessages.MsgBox_YES_NO_CANCEL("Đã tạo thành công lớp " + m_lbl_mo_ta.Text + ". Bạn có muốn tạo lớp khác không?");
+                    switch (v_dlg)
+                    {
+                        case DialogResult.Yes:
+                            refresh_form();
+                            break;
+                        case DialogResult.No:
+                            this.Close();
+                            break;
+                        case DialogResult.Cancel:
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
             catch (Exception v_e)
             {

@@ -55,7 +55,7 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             m_cmd_insert.Visible = false;
             m_cmd_update.Visible = false;
             m_dgl_result = System.Windows.Forms.DialogResult.Cancel;
-           // m_cmd_exit.Visible = true;
+            // m_cmd_exit.Visible = true;
             display_from_f315();
             return m_dgl_result;
         }
@@ -120,7 +120,7 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             v_htb.Add(V_HOC_SINH.EMAIL_PH, e_col_Number.EMAIL_PH);
             v_htb.Add(V_HOC_SINH.HO_TEN_PH, e_col_Number.HO_TEN_PH);
             v_htb.Add(V_HOC_SINH.MA_DOI_TUONG, e_col_Number.MA_DOI_TUONG);
-           v_htb.Add(V_HOC_SINH.SDT_CO_DINH, e_col_Number.SDT_CO_DINH);
+            v_htb.Add(V_HOC_SINH.SDT_CO_DINH, e_col_Number.SDT_CO_DINH);
             v_htb.Add(V_HOC_SINH.DIA_CHI, e_col_Number.DIA_CHI);
             v_htb.Add(V_HOC_SINH.SDT_PH, e_col_Number.SDT_PH);
             v_htb.Add(V_HOC_SINH.HO_TEN, e_col_Number.HO_TEN);
@@ -174,8 +174,8 @@ namespace BKI_QLTTQuocAnh.DanhMuc
 
         private void insert_v_hoc_sinh()
         {
-            	f221_cap_nhat_thong_tin_hoc_sinh_de v_fDE = new f221_cap_nhat_thong_tin_hoc_sinh_de();								
-            	v_fDE.display_for_insert();
+            f221_cap_nhat_thong_tin_hoc_sinh_de v_fDE = new f221_cap_nhat_thong_tin_hoc_sinh_de();
+            v_fDE.display_for_insert();
             load_data_2_grid();
         }
 
@@ -235,7 +235,7 @@ namespace BKI_QLTTQuocAnh.DanhMuc
 
         private void set_define_events()
         {
-           // m_cmd_exit.Click += new EventHandler(m_cmd_exit_Click);
+            // m_cmd_exit.Click += new EventHandler(m_cmd_exit_Click);
             m_cmd_insert.Click += new EventHandler(m_cmd_insert_Click);
             m_cmd_update.Click += new EventHandler(m_cmd_update_Click);
             m_cmd_delete.Click += new EventHandler(m_cmd_delete_Click);
@@ -246,8 +246,8 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             this.KeyDown += f220_cap_nhat_thong_tin_hoc_sinh_KeyDown;
         }
 
-      
-        
+
+
         #endregion
 
         //
@@ -288,8 +288,8 @@ namespace BKI_QLTTQuocAnh.DanhMuc
         void f220_cap_nhat_thong_tin_hoc_sinh_KeyDown(object sender, KeyEventArgs e)
         {
             try
-            {             
-                if ((e.KeyCode == Keys.Escape)&&(m_trang_thai_hien_thi == 1))
+            {
+                if ((e.KeyCode == Keys.Escape) && (m_trang_thai_hien_thi == 1))
                 {
                     this.Close();
                 }
@@ -302,7 +302,7 @@ namespace BKI_QLTTQuocAnh.DanhMuc
             catch (Exception v_e)
             {
                 CSystemLog_301.ExceptionHandle(v_e);
-            } 
+            }
         }
 
         void f220_cap_nhat_thong_tin_hoc_sinh_Load(object sender, EventArgs e)

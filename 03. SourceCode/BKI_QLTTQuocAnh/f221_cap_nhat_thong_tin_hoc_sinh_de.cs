@@ -27,12 +27,20 @@ namespace BKI_QLTTQuocAnh
             US_V_HOC_SINH v_us_hs = new US_V_HOC_SINH();
             m_txt_ma_hoc_sinh.Text = v_us_hs.suggest_id_hs_moi();
             m_e_form_mode = DataEntryFormMode.InsertDataState;
+            m_trang_thai_hien_thi = 1;
             this.ShowDialog();
         }
-        //public US_V_HOC_SINH get_us_v_dm_hoc_sinh()
-        //{
-        //    return m_us_hs;
-        //}
+       
+        
+        public void display_for_update(US_V_HOC_SINH ip_us_test)
+        {
+            m_e_form_mode = DataEntryFormMode.UpdateDataState;
+            m_us_hs = ip_us_test;
+            us_obj_2_from();
+            m_trang_thai_hien_thi = 1;
+            this.ShowDialog();
+        }
+
         public US_V_HOC_SINH select_hoc_sinh(ref US_V_HOC_SINH m_us_v_hoc_sinh)
         {
             m_us_v_hoc_sinh = m_us_hs;
@@ -42,15 +50,8 @@ namespace BKI_QLTTQuocAnh
             // m_dgl_result = System.Windows.Forms.DialogResult.Cancel;
             //// m_cmd_exit.Visible = true;
             //this.ShowDialog();
-            
+            m_trang_thai_hien_thi = 0;
             return m_us_v_hoc_sinh;
-        }
-        public void display_for_update(US_V_HOC_SINH ip_us_test)
-        {
-            m_e_form_mode = DataEntryFormMode.UpdateDataState;
-            m_us_hs = ip_us_test;
-            us_obj_2_from();
-            this.ShowDialog();
         }
 
         private void us_obj_2_from()
@@ -73,6 +74,7 @@ namespace BKI_QLTTQuocAnh
         DialogResult m_dgl_result = DialogResult.Cancel;
         US_V_DM_HOC_SINH m_us = new US_V_DM_HOC_SINH();
         US_V_HOC_SINH m_us_hs = new US_V_HOC_SINH();
+        int m_trang_thai_hien_thi = 0; //0 - bat ra tu form f315; 1 - tu form 220 dm hs
         #endregion
 
         #region Private Methods
@@ -132,7 +134,22 @@ namespace BKI_QLTTQuocAnh
                 default:
                     break;
             }
-            BaseMessages.MsgBox_Infor("Đã cập nhật thành công!");
+            //BaseMessages.MsgBox_Infor("Đã cập nhật thành công!");
+        }
+
+        private void refresh_form()
+        {
+            US_V_HOC_SINH v_us_hs = new US_V_HOC_SINH();
+            m_txt_ma_hoc_sinh.Text = v_us_hs.suggest_id_hs_moi();
+            m_txt_ho_va_ten_lot.Text = "";
+            m_txt_ten.Text = "";
+            m_txt_so_dien_thoai_hoc_sinh.Text = "";
+            m_txt_email_hoc_sinh.Text = "";
+            m_txt_truong_dang_hoc.Text = "";
+            m_txt_dia_chi.Text = "";
+            m_txt_ho_ten_phu_huynh.Text = "";
+            m_txt_email_phu_huynh.Text = "";
+            m_txt_so_dien_thoai_phu_huynh.Text = "";
         }
 
         private void form_2_us()
@@ -247,13 +264,36 @@ namespace BKI_QLTTQuocAnh
             try
             {
                 save_data();
-                this.Close();
+                if (m_trang_thai_hien_thi == 1 && m_e_form_mode == DataEntryFormMode.InsertDataState)
+                {
+                    DialogResult v_dlg = BaseMessages.MsgBox_YES_NO_CANCEL("Đã tạo mới học sinh thành công. Bạn có muốn nhập phiếu khác");
+                            switch (v_dlg)
+                            {
+                                case DialogResult.Yes:
+                                    refresh_form();
+                                    break;
+                                case DialogResult.No:
+                                    this.Close();
+                                    break;
+                                case DialogResult.Cancel:
+                                    break;
+                                default:
+                                    break;
+                            }
+                }
+                else
+                {
+                    BaseMessages.MsgBox_Infor("Đã cập nhật thành công!");
+                    this.Close();
+                }
             }
             catch (Exception v_e)
             {
                 CSystemLog_301.ExceptionHandle(v_e);
             }
         }
+
+        
 
     }
 }
