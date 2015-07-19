@@ -266,7 +266,7 @@ namespace BKI_QLTTQuocAnh
                 save_data();
                 if (m_trang_thai_hien_thi == 1 && m_e_form_mode == DataEntryFormMode.InsertDataState)
                 {
-                    DialogResult v_dlg = BaseMessages.MsgBox_YES_NO_CANCEL("Đã tạo mới học sinh thành công. Bạn có muốn nhập phiếu khác");
+                    DialogResult v_dlg = BaseMessages.MsgBox_YES_NO_CANCEL("Đã tạo mới học sinh thành công. Bạn có muốn nhập học sinh khác");
                             switch (v_dlg)
                             {
                                 case DialogResult.Yes:

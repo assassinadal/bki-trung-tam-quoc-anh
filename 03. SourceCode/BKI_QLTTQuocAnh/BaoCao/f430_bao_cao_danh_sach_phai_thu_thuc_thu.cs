@@ -483,6 +483,7 @@ namespace BKI_QLTTQuocAnh
             m_cmd_delete.Visible = true;
             this.ShowDialog();
         }
+
         public void display_from_f470(US_V_RPT_BAO_CAO_TINH_HINH_TAI_CHINH ip_us, DateTime ip_dat_tu_ngay, DateTime ip_dat_den_ngay)
         {
             m_trang_thai_hien_thi = 1;

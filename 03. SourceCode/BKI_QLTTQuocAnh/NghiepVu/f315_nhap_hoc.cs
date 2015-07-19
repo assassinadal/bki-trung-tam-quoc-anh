@@ -120,11 +120,11 @@ namespace BKI_QLTTQuocAnh.NghiepVu
 
         private bool check_data_is_ok()
         {
-            if (check_hs_in_lop_mon()==true)
+            if (check_hs_in_lop_mon() == true)
             {
                 //BaseMessagesa
                 return false;
-            } 
+            }
 
             return true;
         }
@@ -141,8 +141,28 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             {
                 return true;
             }
-            else return false; 
+            else return false;
         }
+
+        private bool check_hs_dang_hoc_yn()
+        {
+            string v_op_kq_yn = "";
+            US_GD_HOC v_us_gd_hoc = new US_GD_HOC();
+            v_us_gd_hoc.check_hoc_sinh_dang_hoc_yn(m_us_v_hoc_sinh.dcID, CIPConvert.ToDecimal(m_cbo_nhap_vao_lop_mon.SelectedValue), ref v_op_kq_yn);
+
+            if (v_op_kq_yn == "Y")
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        //private bool check_hs_dang_hoc_yn()
+        //{
+        //    string v_op_kq_yn = "";
+        //    US_GD_HOC v_us_gd_hoc = new US_GD_HOC();
+        //    v_us_gd_hoc.check_hoc_sinh_dang_hoc_yn(m_us_v_hoc_sinh.dcID, CIPConvert.ToDecimal(m_cbo_nhap_vao_lop_mon.SelectedValue), ref v_op_kq_yn);
+        //}
 
         private void form_2_us_object()
         {
@@ -156,12 +176,56 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             m_us_gd_hoc.datNGAY_KET_THUC = v_dat;
         }
 
+        private void cho_hoc_sinh_hoc_lai()
+        {
+            US_GD_HOC v_us = new US_GD_HOC();
+            decimal op_dc_id_gd_hoc = 0;
+            v_us.Find_ID_GD_HOC(CIPConvert.ToDecimal(m_cbo_nhap_vao_lop_mon.SelectedValue), m_us_v_hoc_sinh.dcID, ref op_dc_id_gd_hoc);
+            US_GD_HOC v_us_gd_hoc = new US_GD_HOC(op_dc_id_gd_hoc);
+            v_us_gd_hoc.strTRANG_THAI_YN = "Y";
+            v_us_gd_hoc.datNGAY_BAT_DAU = m_dat_tai_ngay.Value.Date;
+            v_us_gd_hoc.datNGAY_KET_THUC = CIPConvert.ToDatetime("01/01/3000", "dd/MM/yyyy");
+            v_us_gd_hoc.Update();
+        }
+
+        private void refresh_form()
+        {
+            m_txt_chon_hs.Text = "";
+            //load_data_2_cbo_lop_mon();
+        }
+
         private void save_data()//Hien tai moi chi su dung insert TuyenNT xu ly update sau
         {
             if (!check_data_is_ok())
             {
-                BaseMessages.MsgBox_Error("Học sinh này đã có trong lớp rồi!");
-                return;
+                //BaseMessages.MsgBox_Error("Học sinh này đã có trong lớp rồi!");
+                if (check_hs_dang_hoc_yn())
+                {
+                    BaseMessages.MsgBox_Error("Học sinh này đã có trong lớp rồi!");
+                    return;
+                }
+                else
+                {
+                    if (BaseMessages.MsgBox_YES_NO_CANCEL("Học sinh này đã nghỉ học khỏi lớp môn này, bạn muốn cho học lại không?") == DialogResult.Yes)
+                    {
+                        cho_hoc_sinh_hoc_lai();
+                        DialogResult v_dlg = BaseMessages.MsgBox_YES_NO_CANCEL("Dữ liệu đã được cập nhật. Bạn có muốn nhập học cho học sinh khác không?");
+                        switch (v_dlg)
+                        {
+                            case DialogResult.Yes:
+                                refresh_form();
+                                break;
+                            case DialogResult.No:
+                                this.Close();
+                                break;
+                            case DialogResult.Cancel:
+                                break;
+                            default:
+                                break;
+                        }                        
+                    }
+                    return;
+                }
             }
             if (!check_validate_data())
             {
@@ -172,15 +236,30 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             switch (m_e_form_mode)
             {
                 case DataEntryFormMode.InsertDataState:
-                   // m_us_dm_hoc_sinh.Insert();
+                    // m_us_dm_hoc_sinh.Insert();
                     m_us_gd_hoc.Insert();
                     break;
                 case DataEntryFormMode.UpdateDataState:
-                  //  m_us_dm_hoc_sinh.Update();
+                    //  m_us_dm_hoc_sinh.Update();
                     m_us_gd_hoc.Update();
                     break;
             }
-            BaseMessages.MsgBox_Infor("Dữ liệu đã được cập nhât!");
+
+            DialogResult v_dlg2 = BaseMessages.MsgBox_YES_NO_CANCEL("Dữ liệu đã được cập nhật. Bạn có muốn nhập học cho học sinh khác không?");
+            switch (v_dlg2)
+            {
+                case DialogResult.Yes:
+                    refresh_form();
+                    break;
+                case DialogResult.No:
+                    this.Close();
+                    break;
+                case DialogResult.Cancel:
+                    break;
+                default:
+                    break;
+            }             
+            
             //load_data_2_grid();
         }
 
@@ -220,7 +299,7 @@ namespace BKI_QLTTQuocAnh.NghiepVu
         {
             m_ds = new DS_V_GD_HOC();
             m_ds.Clear();
-            m_us.FillDataset(m_ds,  m_txt_chon_hs.Text.Trim());
+            m_us.FillDataset(m_ds, m_txt_chon_hs.Text.Trim());
             m_fg.Redraw = false;
             CGridUtils.Dataset2C1Grid(m_ds, m_fg, m_obj_trans);
             m_fg.Redraw = true;
@@ -358,7 +437,8 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             try
             {
                 f220_cap_nhat_thong_tin_hoc_sinh v_frm = new f220_cap_nhat_thong_tin_hoc_sinh();
-                if (v_frm.select_hoc_sinh(ref m_us_v_hoc_sinh) == System.Windows.Forms.DialogResult.OK) {
+                if (v_frm.select_hoc_sinh(ref m_us_v_hoc_sinh) == System.Windows.Forms.DialogResult.OK)
+                {
                     m_txt_chon_hs.Text = m_us_v_hoc_sinh.strHO_TEN;
                     m_cbo_nhap_vao_lop_mon.Focus();
                 }
@@ -429,9 +509,9 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             f221_cap_nhat_thong_tin_hoc_sinh_de v_frm = new f221_cap_nhat_thong_tin_hoc_sinh_de();
             v_frm.display_for_insert();
             v_frm.select_hoc_sinh(ref m_us_v_hoc_sinh);
-             m_txt_chon_hs.Text = m_us_v_hoc_sinh.strHO+' '+m_us_v_hoc_sinh.strTEN;
-             m_cbo_nhap_vao_lop_mon.Focus();
-            
+            m_txt_chon_hs.Text = m_us_v_hoc_sinh.strHO + ' ' + m_us_v_hoc_sinh.strTEN;
+            m_cbo_nhap_vao_lop_mon.Focus();
+
         }
 
     }

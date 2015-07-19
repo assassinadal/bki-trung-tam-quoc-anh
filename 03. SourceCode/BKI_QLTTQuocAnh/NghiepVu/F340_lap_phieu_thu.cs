@@ -1136,9 +1136,20 @@ namespace BKI_QLTTQuocAnh.NghiepVu
                 for (int i = 0; i < v_ds_v_rpt_chi_tiet_phieu_thu.Tables[0].Rows.Count; i++)
                 {
                     US_V_RPT_CHI_TIET_PHIEU_THU v_us_v_rpt_chi_tiet_phieu_thu_detail = new US_V_RPT_CHI_TIET_PHIEU_THU(v_ds_v_rpt_chi_tiet_phieu_thu.Tables[0].Rows[i]);
-                    v_us_v_rpt_chi_tiet_phieu_thu_detail.BeginTransaction();
-                    v_us_v_rpt_chi_tiet_phieu_thu_detail.DeleteByID(v_us_v_rpt_chi_tiet_phieu_thu_detail.dcID);
-                    v_us_v_rpt_chi_tiet_phieu_thu_detail.CommitTransaction();
+                    try
+                    {
+                        v_us_v_rpt_chi_tiet_phieu_thu_detail.BeginTransaction();
+                        v_us_v_rpt_chi_tiet_phieu_thu_detail.DeleteByID(v_us_v_rpt_chi_tiet_phieu_thu_detail.dcID);
+                        v_us_v_rpt_chi_tiet_phieu_thu_detail.CommitTransaction();
+                    }
+                    catch (Exception v_e)
+                    {
+                        v_us_v_rpt_chi_tiet_phieu_thu_detail.Rollback();
+                        CDBExceptionHandler v_objErrHandler = new CDBExceptionHandler(v_e,
+                            new CDBClientDBExceptionInterpret());
+                        v_objErrHandler.showErrorMessage();
+                        //BaseMessages.MsgBox_Infor("Không xóa được học sinh này do học sinh này đang học một lớp môn nào đó!");
+                    }
                 }
             }
 

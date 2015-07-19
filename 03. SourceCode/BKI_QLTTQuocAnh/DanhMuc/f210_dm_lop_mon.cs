@@ -476,6 +476,12 @@ namespace BKI_QLTTQuocAnh.DanhMuc
         {
             if (DialogResult.Yes == BaseMessages.MsgBox_YES_NO_CANCEL("Bạn có chắc chắc muốn lớp này hoạt động không?"))
             {
+                US_DM_LOP_MON v_us = new US_DM_LOP_MON();
+                if (!CGridUtils.IsThere_Any_NonFixed_Row(m_fg)) return;
+                if (!CGridUtils.isValid_NonFixed_RowIndex(m_fg, m_fg.Row)) return;
+                grid2us_object(v_us, m_fg.Row);
+
+                m_op_dc_id_lop_mon = v_us.dcID;
                 US_DM_LOP_MON v_us_dm_lop_mon = new US_DM_LOP_MON(m_op_dc_id_lop_mon);
                 v_us_dm_lop_mon.dcTRANG_THAI_LOP_MON = 88;
                 v_us_dm_lop_mon.Update();

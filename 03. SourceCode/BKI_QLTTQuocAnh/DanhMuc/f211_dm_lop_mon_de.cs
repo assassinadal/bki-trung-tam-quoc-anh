@@ -117,7 +117,7 @@ namespace BKI_QLTTQuocAnh.DanhMuc
                 case DataEntryFormMode.InsertDataState:
                     //us.insert();
                     m_us_dm_lop_mon.Insert();
-                    BaseMessages.MsgBox_Infor("Bạn đã thêm thành công!!!");
+                    //BaseMessages.MsgBox_Infor("Bạn đã thêm thành công!!!");
                     this.Close();
                     break;
                 case DataEntryFormMode.UpdateDataState:
