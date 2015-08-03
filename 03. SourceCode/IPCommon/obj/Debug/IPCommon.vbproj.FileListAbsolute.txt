@@ -63,3 +63,30 @@ F:\03. Work\01. BKIndex\05. Project\00. Quan Ly Tai Chinh Trung Tam Quoc Anh\03.
 F:\03. Work\01. BKIndex\05. Project\00. Quan Ly Tai Chinh Trung Tam Quoc Anh\03. SourceCode\IPCommon\obj\Debug\IPCommon.dll
 F:\03. Work\01. BKIndex\05. Project\00. Quan Ly Tai Chinh Trung Tam Quoc Anh\03. SourceCode\IPCommon\obj\Debug\IPCommon.xml
 F:\03. Work\01. BKIndex\05. Project\00. Quan Ly Tai Chinh Trung Tam Quoc Anh\03. SourceCode\IPCommon\obj\Debug\IPCommon.pdb
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\IPCommon.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\IPCommon.pdb
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\IPCommon.xml
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\C1.Common.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\C1.Win.C1FlexGrid.Classic.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\C1.Win.C1FlexGrid.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\bin\DevComponents.DotNetBar2.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IPCommon.vbprojResolveAssemblyReference.cache
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.ctlButton2.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.ctlButton3.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.ctlClock.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.MessageForms.MsgButtonYes_No_Cancel.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.MessageForms.MsgBtn_Yes_No.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.DataGrid_Custom.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.f370_REPORT_VIEW.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.frmEditText.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.frmIcons.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.frmSearchDate.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.frmSearchNumeric.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.frmSearchString.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.MessageForms.MsgBoxForm_Yes_No.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.MessageForms.MsgBoxFormYes_No_Cancel.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IP.Core.IPCommon.MessageForms.MsgBoxForm_OK.resources
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IPCommon.vbproj.GenerateResource.Cache
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IPCommon.dll
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IPCommon.xml
+F:\03. Work\02. Project\01.QuanLyTTQuocAnh\trunk\03. SourceCode\IPCommon\obj\Debug\IPCommon.pdb
