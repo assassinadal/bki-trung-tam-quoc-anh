@@ -73,7 +73,6 @@ namespace BKI_QLTTQuocAnh.NghiepVu
             load_data_2_cbo_chon_lop_mon();
             m_cbo_lop_mon.SelectedIndexChanged += m_cbo_lop_mon_SelectedIndexChanged;
         }
-
         
         private void load_data_2_cbo_chon_lop_mon()
         {
